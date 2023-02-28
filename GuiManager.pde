@@ -24,13 +24,13 @@ public class GuiManager {
 
         ArrayList<Button> buttons = screens.get(currentScreen);
         for (int i = 0; i < buttons.size(); i++) {
-            if (onButton(buttons.get(i), x, y)) {
+            if (isOnButton(buttons.get(i), x, y)) {
                 buttons.get(i).click();
             }
         }
     }
 
-    private boolean onButton(Button button, float x, float y) {
+    private boolean isOnButton(Button button, float x, float y) {
         switch (button.getButtonShape()) {
             case ButtonShape.RECTANGLE:
                 return isInRectangle(x, y, button.getX(), button.getY(), button.getWidth(), button.getHeight());
