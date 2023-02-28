@@ -5,15 +5,19 @@ public class Button {
     protected final float hei;
     protected final int buttonShape;
 
-    public Button(float x, float y, float wid, float hei, int buttonShape) {
+    protected final color col;
+
+    public Button(float x, float y, float wid, float hei, color col, int buttonShape) {
         this.x = x;
         this.y = y;
         this.wid = wid;
         this.hei = hei;
+        this.col = col;
         this.buttonShape = buttonShape;
     }
 
     public void draw() {
+        fill(col);
         if (buttonShape == ButtonShape.RECTANGLE) {
             rect(x, y, wid, hei);
         } else if (buttonShape == ButtonShape.ELLIPSE) {
@@ -22,7 +26,7 @@ public class Button {
     }
 
     public void click() {
-
+        col = color(random(255), random(255), random(255));
     }
 
     public float getX() {

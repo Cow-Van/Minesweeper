@@ -6,6 +6,17 @@ public class GuiManager {
 
     public GuiManager() {}
 
+    public void draw() {
+        if (!enabled || currentScreen == null) {
+            return;
+        }
+
+        ArrayList<Button> buttons = screens.get(currentScreen);
+        for (int i = 0; i < buttons.size(); i++) {
+            buttons.get(i).draw();
+        }
+    }
+
     public void click(float x, float y) {
         if (!enabled || currentScreen == null) {
             return;
@@ -19,7 +30,7 @@ public class GuiManager {
         }
     }
 
-    public boolean onButton(Button button, float x, float y) {
+    private boolean onButton(Button button, float x, float y) {
         switch (button.getButtonShape()) {
             case ButtonShape.RECTANGLE:
                 return isInRectangle(x, y, button.getX(), button.getY(), button.getWidth(), button.getHeight());
@@ -38,7 +49,7 @@ public class GuiManager {
         return ((x - h) * (x - h) / (rx * rx)) + ((y - k) * (y - k) / (ry * ry)) <= 1
     }
 
-    public boolean registerButton(Button button, int screen) {
+    public boolean registerButton(int screen, Button button) {
         if (!screens.containsKey(screen)) {
             return false;
         }
@@ -77,7 +88,7 @@ public class GuiManager {
     }
 
     public boolean setScreen(int id) {
-        if (!screens.containsKey(id)) {
+        if (!enabled || !screens.containsKey(id)) {
             return false;
         }
 
