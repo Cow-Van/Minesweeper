@@ -7,22 +7,39 @@ public class GuiManager {
     public GuiManager() {}
 
     public void click(float x, float y) {
-        if (!enabled) {
+        if (!enabled || currentScreen == null) {
             return;
+        }
+
+        ArrayList<Button> buttons = screens.get(currentScreen);
+        for (int i = 0; i < buttons.size(); i++) {
+            if (onButton(buttons.get(i), x, y)) {
+                buttons.get(i).click();
+            }
         }
     }
 
-    public boolean createScreen(int id) {
-        if (screens.hasKey(id)) {
-            return false;
+    public boolean onButton(Button button, float x, float y) {
+        switch (button.getButtonShape()) {
+            case ButtonShape.RECTANGLE:
+                return isInRectangle(x, y, button.getX(), button.getY(), button.getWidth(), button.getHeight());
+            case ButtonShape.ELLIPSE:
+                return isInEllipse(x, y, button.getX(), button.getY(), button.getWidth() / 2, button.getHeight() / 2);
+            default:
+                return false;
         }
+    }
 
-        screens.put(id, new ArrayList<Button>());
-        return true;
+    private boolean isInRectangle(float x, float y, float centerX, float centerY, float wid, float hei) {
+        return x > centerX - (wid / 2) && x < centerX + (wid / 2) && y > centerY - (hei / 2) && y < centerY + (hei / 2);
+    }
+
+    private boolean isInEllipse(float x, float y, float h, float k, float rx, float ry) {
+        return ((x - h) * (x - h) / (rx * rx)) + ((y - k) * (y - k) / (ry * ry)) <= 1
     }
 
     public boolean registerButton(Button button, int screen) {
-        if (!screens.hasKey(screen)) {
+        if (!screens.containsKey(screen)) {
             return false;
         }
 
@@ -48,6 +65,23 @@ public class GuiManager {
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public boolean createScreen(int id) {
+        if (screens.containsKey(id)) {
+            return false;
+        }
+
+        screens.put(id, new ArrayList<Button>());
+        return true;
+    }
+
+    public boolean setScreen(int id) {
+        if (!screens.containsKey(id)) {
+            return false;
+        }
+
+        currentScreen = id;
     }
 
     public int getCurrentScreen() {
