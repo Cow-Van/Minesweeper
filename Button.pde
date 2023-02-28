@@ -38,7 +38,7 @@ public class Button {
     }
 
     public float getHeight() {
-        return height;
+        return hei;
     }
 
     public int getButtonShape() {

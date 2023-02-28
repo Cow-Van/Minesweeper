@@ -1,5 +1,5 @@
 public final GuiManager guiManager = new GuiManager();
-Button b1 = new Button(375, 375, 300, 300, ButtonShape.RECTANGLE);
+Button b1 = new Button(375, 375, 500, 400, ButtonShape.ELLIPSE);
 
 public void setup() {
     rectMode(CENTER);
