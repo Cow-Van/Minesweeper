@@ -17,7 +17,7 @@ public class GuiManager {
         }
     }
 
-    public void click(float x, float y) {
+    public void leftClick(float x, float y) {
         if (!enabled || currentScreen == null) {
             return;
         }
@@ -25,7 +25,20 @@ public class GuiManager {
         ArrayList<Button> buttons = screens.get(currentScreen);
         for (int i = 0; i < buttons.size(); i++) {
             if (isOnButton(buttons.get(i), x, y)) {
-                buttons.get(i).click();
+                buttons.get(i).leftClick();
+            }
+        }
+    }
+
+    public void leftClick(float x, float y) {
+        if (!enabled || currentScreen == null) {
+            return;
+        }
+
+        ArrayList<Button> buttons = screens.get(currentScreen);
+        for (int i = 0; i < buttons.size(); i++) {
+            if (isOnButton(buttons.get(i), x, y)) {
+                buttons.get(i).rightClick();
             }
         }
     }

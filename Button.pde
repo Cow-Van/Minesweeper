@@ -1,4 +1,4 @@
-public class Button {
+public abstract class Button {
     protected final float x;
     protected final float y;
     protected final float wid;
@@ -16,6 +16,10 @@ public class Button {
         this.buttonShape = buttonShape;
     }
 
+    public abstract void leftClick();
+
+    public abstract void rightClick();
+
     public void draw() {
         fill(col);
         if (buttonShape == ButtonShape.RECTANGLE) {
@@ -23,10 +27,6 @@ public class Button {
         } else if (buttonShape == ButtonShape.ELLIPSE) {
             ellipse(x, y, wid, hei);
         }
-    }
-
-    public void click() {
-        col = color(random(255), random(255), random(255));
     }
 
     public float getX() {
