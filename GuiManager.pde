@@ -93,6 +93,7 @@ public class GuiManager {
         }
 
         currentScreen = id;
+        return true;
     }
 
     public int getCurrentScreen() {
