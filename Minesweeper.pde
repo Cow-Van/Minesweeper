@@ -27,6 +27,6 @@ public void mouseClicked() {
     if (mouseButton == LEFT) {
         guiManager.leftClick(mouseX, mouseY);
     } else if (mouseButton == RIGHT) {
-        guiManager.leftClick(mouseX, mouseY);
+        guiManager.rightClick(mouseX, mouseY);
     }
 }

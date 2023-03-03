@@ -21,7 +21,7 @@ public class Tile extends Button {
         if (revealed && mine) {
             col = mineColor;
         } else if (revealed) {
-            col = revealed;
+            col = revealedColor;
         } else if (flagged) {
             col = flagColor;
         } else {
@@ -41,6 +41,15 @@ public class Tile extends Button {
 
     public void rightClick() {
         gameManager.rightClick(this);
+    }
+
+    public void setRevealed(boolean b) {
+        revealed = b;
+        println(revealed);
+    }
+
+    public void setFlagged(boolean b) {
+        flagged = b;
     }
 
     public boolean isMine() {

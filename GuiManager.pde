@@ -1,5 +1,5 @@
 public class GuiManager {
-    private final Map<Integer, ArrayList<Button>> screens = new HashMap<Integer, ArrayList<Button>>();
+    private final HashMap<Integer, ArrayList<Button>> screens = new HashMap<Integer, ArrayList<Button>>();
 
     private boolean enabled = true;
     private boolean currentScreen = null;
@@ -59,7 +59,7 @@ public class GuiManager {
     }
 
     private boolean isInEllipse(float x, float y, float h, float k, float rx, float ry) {
-        return ((x - h) * (x - h) / (rx * rx)) + ((y - k) * (y - k) / (ry * ry)) <= 1
+        return ((x - h) * (x - h) / (rx * rx)) + ((y - k) * (y - k) / (ry * ry)) <= 1;
     }
 
     public boolean registerButton(int screen, Button button) {

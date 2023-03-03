@@ -1,6 +1,6 @@
 public class ScreenManager {
     private final GuiManager guiManager;
-    private final Map<Integer, GameManager> gameManagers = new HashMap<Integer, GameManager>();
+    private final HashMap<Integer, GameManager> gameManagers = new HashMap<Integer, GameManager>();
 
     private int currentScreen = null;
 

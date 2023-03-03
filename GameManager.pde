@@ -2,6 +2,10 @@ public class GameManager {
     public final float TILE_WIDTH = 25;
     public final float TILE_HEIGHT = 25;
     public final float TILE_MARGIN = 2.5;
+    public final color UNREVEALED_COLOR = color(0);
+    public final color REVEALED_COLOR = color(100);
+    public final color FLAG_COLOR = color(255, 0, 0);
+    public final color MINE_COLOR = color(0, 255, 0);
 
     private final GuiManager guiManager;
 
@@ -23,7 +27,7 @@ public class GameManager {
     }
 
     public void leftClick(Tile tile) {
-
+        tile.setRevealed(true);
     }
 
     public void rightClick(Tile tile) {
@@ -42,8 +46,7 @@ public class GameManager {
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                println(boardTopLeftX + " " + boardTopLeftY);
-                Tile tile = new Tile(boardTopLeftX + i * totalTileWidth + totalTileWidth / 2, boardTopLeftY + j * totalTileHeight + totalTileHeight / 2, TILE_WIDTH, TILE_HEIGHT, ButtonShape.RECTANGLE, false, color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), color(0, 0, 0), guiManager);
+                Tile tile = new Tile(boardTopLeftX + i * totalTileWidth + totalTileWidth / 2, boardTopLeftY + j * totalTileHeight + totalTileHeight / 2, TILE_WIDTH, TILE_HEIGHT, ButtonShape.RECTANGLE, false, UNREVEALED_COLOR, REVEALED_COLOR, FLAG_COLOR, MINE_COLOR, guiManager);
                 guiManager.registerButton(0, tile);
                 board[i][j] = tile;
             }
