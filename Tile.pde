@@ -4,15 +4,17 @@ public class Tile extends Button {
     private final color revealedColor;
     private final color flagColor;
     private final color mineColor;
+    private final GameManager gameManager;
 
     private boolean flagged = false;
     private boolean revealed = false;
     private int surroundingMines = 0;
 
-    public Tile(float x, float y, float wid, float hei, int buttonShape, boolean mine, color unrevealedColor, color revealedColor, color flagColor, color mineColor) {
+    public Tile(float x, float y, float wid, float hei, int buttonShape, boolean mine, color unrevealedColor, color revealedColor, color flagColor, color mineColor, GameManager gameManager) {
         super(x, y, wid, hei, unrevealedColor, buttonShape);
         
         this.mine = mine;
+        this.gameManager = gameManager;
     }
 
     public void draw() {
@@ -33,9 +35,13 @@ public class Tile extends Button {
         }
     }
 
-    public void leftClick() {}
+    public void leftClick() {
+        gameManager.leftClick(this);
+    }
 
-    public void rightClick() {}
+    public void rightClick() {
+        gameManager.rightClick(this);
+    }
 
     public boolean isMine() {
         return mine;

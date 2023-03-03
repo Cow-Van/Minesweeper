@@ -30,7 +30,7 @@ public class GuiManager {
         }
     }
 
-    public void leftClick(float x, float y) {
+    public void rightClick(float x, float y) {
         if (!enabled || currentScreen == null) {
             return;
         }
