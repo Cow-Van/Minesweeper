@@ -8,7 +8,7 @@ public void setup() {
     screenManager.createScreen(0);
     screenManager.setScreen(0);
     screenManager.registerGameManager(0, gameManager);
-    gameManager.setBoardSize(20, 20);
+    gameManager.setBoardSize(5, 5);
     gameManager.reset();
 }
 

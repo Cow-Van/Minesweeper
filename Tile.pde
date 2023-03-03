@@ -1,23 +1,26 @@
 public class Tile extends Button {
-    private final boolean mine;
     private final color unrevealedColor;
     private final color revealedColor;
     private final color flagColor;
     private final color mineColor;
+    private final int boardX;
+    private final int boardY;
     private final GameManager gameManager;
 
+    private boolean mine = false;
     private boolean flagged = false;
     private boolean revealed = false;
     private int surroundingMines = 0;
 
-    public Tile(float x, float y, float wid, float hei, int buttonShape, boolean mine, color unrevealedColor, color revealedColor, color flagColor, color mineColor, GameManager gameManager) {
+    public Tile(float x, float y, float wid, float hei, int buttonShape, color unrevealedColor, color revealedColor, color flagColor, color mineColor, int boardX, int boardY, GameManager gameManager) {
         super(x, y, wid, hei, unrevealedColor, buttonShape);
         
-        this.mine = mine;
         this.unrevealedColor = unrevealedColor;
         this.revealedColor = revealedColor;
         this.flagColor = flagColor;
         this.mineColor = mineColor;
+        this.boardX = boardX;
+        this.boardY = boardY;
         this.gameManager = gameManager;
     }
 
@@ -47,6 +50,10 @@ public class Tile extends Button {
         gameManager.rightClick(this);
     }
 
+    public void setMine(boolean b) {
+        mine = b;
+    }
+
     public void setRevealed(boolean b) {
         revealed = b;
     }
@@ -65,5 +72,13 @@ public class Tile extends Button {
 
     public boolean isFlagged() {
         return flagged;
+    }
+
+    public int getBoardX() {
+        return boardX;
+    }
+
+    public int getBoardY() {
+        return boardY;
     }
 }
