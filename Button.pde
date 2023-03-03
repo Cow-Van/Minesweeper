@@ -5,7 +5,7 @@ public abstract class Button {
     protected final float hei;
     protected final int buttonShape;
 
-    protected final color col;
+    protected color col;
 
     public Button(float x, float y, float wid, float hei, color col, int buttonShape) {
         this.x = x;

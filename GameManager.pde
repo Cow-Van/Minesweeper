@@ -46,7 +46,7 @@ public class GameManager {
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                Tile tile = new Tile(boardTopLeftX + i * totalTileWidth + totalTileWidth / 2, boardTopLeftY + j * totalTileHeight + totalTileHeight / 2, TILE_WIDTH, TILE_HEIGHT, ButtonShape.RECTANGLE, false, UNREVEALED_COLOR, REVEALED_COLOR, FLAG_COLOR, MINE_COLOR, guiManager);
+                Tile tile = new Tile(boardTopLeftX + i * totalTileWidth + totalTileWidth / 2, boardTopLeftY + j * totalTileHeight + totalTileHeight / 2, TILE_WIDTH, TILE_HEIGHT, ButtonShape.RECTANGLE, false, UNREVEALED_COLOR, REVEALED_COLOR, FLAG_COLOR, MINE_COLOR, this);
                 guiManager.registerButton(0, tile);
                 board[i][j] = tile;
             }

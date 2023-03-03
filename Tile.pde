@@ -14,6 +14,10 @@ public class Tile extends Button {
         super(x, y, wid, hei, unrevealedColor, buttonShape);
         
         this.mine = mine;
+        this.unrevealedColor = unrevealedColor;
+        this.revealedColor = revealedColor;
+        this.flagColor = flagColor;
+        this.mineColor = mineColor;
         this.gameManager = gameManager;
     }
 
@@ -31,7 +35,7 @@ public class Tile extends Button {
         super.draw();
 
         if (revealed && !mine) {
-            text(surroundingMines.toString(), x, y);
+            text(surroundingMines, x, y);
         }
     }
 
@@ -45,7 +49,6 @@ public class Tile extends Button {
 
     public void setRevealed(boolean b) {
         revealed = b;
-        println(revealed);
     }
 
     public void setFlagged(boolean b) {

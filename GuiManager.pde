@@ -2,12 +2,12 @@ public class GuiManager {
     private final HashMap<Integer, ArrayList<Button>> screens = new HashMap<Integer, ArrayList<Button>>();
 
     private boolean enabled = true;
-    private boolean currentScreen = null;
+    private int currentScreen = -1;
 
     public GuiManager() {}
 
     public void draw() {
-        if (!enabled || currentScreen == null) {
+        if (!enabled || currentScreen == -1) {
             return;
         }
 
@@ -18,7 +18,7 @@ public class GuiManager {
     }
 
     public void leftClick(float x, float y) {
-        if (!enabled || currentScreen == null) {
+        if (!enabled || currentScreen == -1) {
             return;
         }
 
@@ -31,7 +31,7 @@ public class GuiManager {
     }
 
     public void rightClick(float x, float y) {
-        if (!enabled || currentScreen == null) {
+        if (!enabled || currentScreen == -1) {
             return;
         }
 
@@ -92,7 +92,7 @@ public class GuiManager {
     }
 
     public boolean createScreen(int id) {
-        if (screens.containsKey(id)) {
+        if (id < 0 || screens.containsKey(id)) {
             return false;
         }
 

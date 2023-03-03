@@ -2,14 +2,14 @@ public class ScreenManager {
     private final GuiManager guiManager;
     private final HashMap<Integer, GameManager> gameManagers = new HashMap<Integer, GameManager>();
 
-    private int currentScreen = null;
+    private int currentScreen = -1;
 
     public ScreenManager(GuiManager guiManager) {
         this.guiManager = guiManager;
     }
 
     public void draw() {
-        if (currentScreen != null && gameManagers.get(currentScreen) != null) {
+        if (currentScreen != -1 && gameManagers.get(currentScreen) != null) {
             gameManagers.get(currentScreen).draw();
         }
 
@@ -21,7 +21,7 @@ public class ScreenManager {
     }
 
     public boolean createScreen(int id) {
-        if (!guiManager.createScreen(id) || gameManagers.containsKey(id)) {
+        if (id < 0 || !guiManager.createScreen(id) || gameManagers.containsKey(id)) {
             return false;
         }
 
