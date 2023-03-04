@@ -71,6 +71,15 @@ public class GuiManager {
         return true;
     }
 
+    public boolean clearButtons(int screen) {
+        if (!screens.containsKey(screen)) {
+            return false;
+        }
+
+        screens.get(screen).clear();
+        return true;
+    }
+
     public void enable() {
         enabled = true;
     }

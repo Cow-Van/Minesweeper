@@ -37,7 +37,9 @@ public class Tile extends Button {
 
         super.draw();
 
-        if (revealed && !mine) {
+        if (revealed && !mine && surroundingMines != 0) {
+            textSize(20);
+            fill(255, 0, 255);
             text(surroundingMines, x, y);
         }
     }
@@ -62,6 +64,10 @@ public class Tile extends Button {
         flagged = b;
     }
 
+    public void setSurrondingMines(int n) {
+        surroundingMines = n;
+    }
+
     public boolean isMine() {
         return mine;
     }
@@ -72,6 +78,10 @@ public class Tile extends Button {
 
     public boolean isFlagged() {
         return flagged;
+    }
+
+    public int getSurrondingMines() {
+        return surroundingMines
     }
 
     public int getBoardX() {
